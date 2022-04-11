@@ -13,10 +13,10 @@ import "filepond/dist/filepond.min.css";
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
-import Button from "react-bootstrap/esm/Button";
-import Card from "../Card";
-import Badge from "react-bootstrap/esm/Badge";
 import axios from "axios";
+import Card from "../Card";
+import Button from "react-bootstrap/esm/Button";
+import Badge from "react-bootstrap/esm/Badge";
 
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
@@ -24,60 +24,67 @@ registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 function Profile() {
   const [files, setFiles] = useState([]);
   const [name, setName] = useState('');
-
   // what is happening here?
 //   const auth = useContext(AuthContext)
-  const {  user } = useContext(AuthContext)
+ 
+  const {  user, setUser } = useContext(AuthContext)
 
-
-
-  // a file has been added or removed, receives list of files
+  //   A file has been added or removed, receives a list of file items
   const handleUpdate = (files)=>{
-    console.log('file has been added or removed')
-
-    console.log('list of files:', files)
-    console.log('one file:', files[0])
-    setFiles(files)
-
+      setFiles(files)      
   }
 
-  const handleSubmit = async(e)=>{
+  const handleSubmit = async (e)=>{
       e.preventDefault()
-      console.log('profile image:', files[0].file)
       let data = new FormData()
-      data.append('fileYo', files[0].file)
-      data.append('name', name[0])
-
-      
-      try{
-          console.log('trying to update with data:',data)
-          let res = await axios.put('/api/users/update_image', data)
-      console.log('res:',res)
-        }catch(error){
-            alert('error updating profile')
-        }
+      data.append('fileYO', files[0].file)
+      data.append('name', name)
+     // axios call
+     try{
+        console.log('trying to update with data:')
+       let res = await axios.put('/api/users/update_image', data)
+       setUser(res.data)
+     } catch(err){
+         alert('error occured updating')
+     }
   }
   return (
     <div className="App">
-      <h1>Profile Page</h1>
-      <p>{JSON.stringify(user)}</p>
-      <Card>
-      <form>
-          <h1>Update Profile</h1>
-          <Badge><p style={{marginBottom:'0px'}}>Name</p></Badge>
-          <br/>
-          <br/>
+      <br/>
+      <br/>
 
-          <input value={name} onChange={(e)=> setName(e.target.value)} /> 
-          <p>Image</p>
-      <FilePond
-        files={files}
-        // allowReorder={true}
-        allowMultiple={false}
-        onupdatefiles={handleUpdate}
-        labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
-      />
-      <Button onClick={handleSubmit}> Update user </Button>
+      <Badge bg= 'dark'><h1>Profile Page</h1></Badge>
+      <br/>
+      <br/>
+
+      <Badge>{user.name}</Badge>
+
+      {user.image && <img src={user.image} width={300} />}
+      {!user.image && <p>no image</p>}
+      <Card>
+      <form >
+        <Badge bg='dark'><h1>Update Profile</h1></Badge>
+        <br/>
+        <br/>
+        <Badge><p style={{marginBottom:'0px'}}>Name</p></Badge>
+      <br/>
+      <br/>
+
+        <input value={name} onChange={(e)=> setName(e.target.value)} />    
+      <br/>
+      <br/>
+
+        <Badge><p style={{marginBottom:'0px'}}>Image</p></Badge>
+      <br/>
+      <br/>
+
+        <FilePond
+            files={files}
+            allowMultiple={false}
+            onupdatefiles={handleUpdate}
+            labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+        />
+        <Button onClick={handleSubmit}>Update Profile</Button>
       </form>
       </Card>
     </div>
