@@ -81,6 +81,23 @@ const NavBar = ()=>{
         )
   }
 
+  const renderProfile = ()=>{
+
+    if(auth.user){
+      return  (
+        <>
+        <Badge><Link to ='/profile' style={{color: 'white'}}> Profile </Link></Badge>
+
+          </>  
+          )
+       }
+      return (
+        <>
+         </>
+
+      )
+}
+
     // const renderLeft = ()=>{
     //     if( auth.user) {
     //         return (
@@ -109,6 +126,8 @@ const NavBar = ()=>{
           
           <NavDropdown.Item>{renderRightNav()}</NavDropdown.Item>
           <NavDropdown.Item>{renderLeftNav()}</NavDropdown.Item>
+          <NavDropdown.Item>{renderProfile()}</NavDropdown.Item>
+
 
 
           {/* <NavDropdown.Item><Badge onClick={auth.handleLogout } >Logout</Badge></NavDropdown.Item>

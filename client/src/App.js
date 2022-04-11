@@ -16,6 +16,7 @@ import NavBar from './components/shared/NavBar';
 import FetchUser from './components/auth/FetchUser';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Feed from './components/auth/Feed';
+import Profile from'./components/auth/Profile';
 
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
           {/* PROTECTED */}
         <Route element={<ProtectedRoute/>}>
           <Route path='/feed' element={<Feed/>}/>
+          <Route path='/profile' element={<Profile/>}/>
+
        </Route>
 
 
