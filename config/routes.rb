@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 namespace :api do
-put 'users/update_image', to: 'users#update_image'
-end
+   put 'users/update_image', to: 'users#update_image'
+  end
+   get '*other', to: 'static#index'
 end
