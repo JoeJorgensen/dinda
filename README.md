@@ -16,10 +16,9 @@
 # Getting started
 
 # Clone
-1. git clone 
-- https: https://github.com/JoeJorgensen/starter-auth-project.git
+1. git clone https://github.com/JoeJorgensen/starter-auth-project.git 'project name'
 - ssh: git@github.com:JoeJorgensen/starter-auth-project.git
-2. cd <project name>
+2. cd 'project name'
 
 
 
