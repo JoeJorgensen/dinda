@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
 namespace :api do
    put 'users/update_image', to: 'users#update_image'
+   get 'braintree_token', to: 'braintree#token'
+   post 'payment', to: 'braintree#payment'
   end
+
    get '*other', to: 'static#index'
 end
+
+

@@ -17,6 +17,7 @@ import FetchUser from './components/auth/FetchUser';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Feed from './components/auth/Feed';
 import Profile from'./components/auth/Profile';
+import Braintree from './components/shared/Braintree';
 
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
          <Route path='/login' element={<Login/>}/>
          <Route path='/register' element={<Register/>}/>
           <Route path='/' element={<Home/>}/>
+          <Route path='/payment' element={<Braintree/>}/>
+
 
           {/* PROTECTED */}
         <Route element={<ProtectedRoute/>}>
