@@ -98,6 +98,24 @@ const NavBar = ()=>{
       )
 }
 
+
+const renderPayment= ()=>{
+
+  {
+    return  (
+      <>
+      <Badge><Link to ='/payment' style={{color: 'white'}}> Payment </Link></Badge>
+
+        </>  
+        )
+     }
+    return (
+      <>
+       </>
+
+    )
+}
+
     // const renderLeft = ()=>{
     //     if( auth.user) {
     //         return (
@@ -126,6 +144,8 @@ const NavBar = ()=>{
           <NavDropdown.Item>{renderRightNav()}</NavDropdown.Item>
           <NavDropdown.Item>{renderLeftNav()}</NavDropdown.Item>
           <NavDropdown.Item>{renderProfile()}</NavDropdown.Item>
+          <NavDropdown.Item>{renderPayment()}</NavDropdown.Item>
+
 
 
 
