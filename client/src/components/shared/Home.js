@@ -16,7 +16,7 @@ const Home = ()=>{
     return (
         <Card>
         <div>
-            <h1>Welcome to the starter app! Login or Register to access more features!</h1>
+            <h1>Welcome to dinda! Login or Register to access more features!</h1>
            
            
             <Link to="/login"><Badge style={{color: 'white'}}><h4>Login</h4></Badge></Link>

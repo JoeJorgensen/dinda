@@ -128,7 +128,7 @@ const renderPayment= ()=>{
         <div>
              <Navbar sticky="top" variant="dark" bg="dark"  expand='lg'>
   <Container fluid>
-    <Navbar.Brand href="/">Starter App</Navbar.Brand>
+    <Navbar.Brand href="/">Dinda</Navbar.Brand>
 
         <NavDropdown 
           id="nav-dropdown-dark-example"
