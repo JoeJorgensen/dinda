@@ -18,36 +18,7 @@ const NavBar = ()=>{
     // if (!user)=>  login/register 
 
     const auth = useContext(AuthContext)
-    const renderRightNav = ()=>{
-
-        if(auth.user){
-          return  (
-            <>
-
-
-            {/* <Badge style={{color: 'white'}} >Feed</Badge> */}
-            <Badge><Link to ='/feed' style={{color: 'white'}}>Feed </Link></Badge>
-
-              </>  
-              )
-           }
-          return (
-            <>
-            {/* <Badge style={{color: 'white'}} href="/login">Login</Badge> */}
-            <Badge><Link to ='/login' style={{color: 'white'}}>Login </Link></Badge>
-
-
-
-
-
-
-
-          
-                        
-             </>
-
-          )
-    }
+    
     const renderLeftNav = ()=>{
 
       if(auth.user){
@@ -73,7 +44,6 @@ const NavBar = ()=>{
           {/* <Badge style={{color: 'white'}} href="/register">Register</Badge> */}
           <Badge><Link to ='/register' style={{color: 'white'}}>Register </Link></Badge>
 
-
         
                       
            </>
@@ -93,6 +63,8 @@ const NavBar = ()=>{
        }
       return (
         <>
+            <Badge><Link to ='/login' style={{color: 'white'}}>Login </Link></Badge>
+
          </>
 
       )
@@ -128,7 +100,7 @@ const renderPayment= ()=>{
         <div>
              <Navbar sticky="top" variant="dark" bg="dark"  expand='lg'>
   <Container fluid>
-    <Navbar.Brand href="/">Dinda</Navbar.Brand>
+    <Navbar.Brand href="/">dinda</Navbar.Brand>
 
         <NavDropdown 
           id="nav-dropdown-dark-example"
@@ -138,13 +110,10 @@ const renderPayment= ()=>{
         >
 
 
-          <NavDropdown.Item style={{color: 'white'}} href="/"><Badge>Home</Badge></NavDropdown.Item>
-          
-          
-          <NavDropdown.Item>{renderRightNav()}</NavDropdown.Item>
-          <NavDropdown.Item>{renderLeftNav()}</NavDropdown.Item>
           <NavDropdown.Item>{renderProfile()}</NavDropdown.Item>
+          <NavDropdown.Item style={{color: 'white'}} href="/"><Badge>Home</Badge></NavDropdown.Item>
           <NavDropdown.Item>{renderPayment()}</NavDropdown.Item>
+          <NavDropdown.Item>{renderLeftNav()}</NavDropdown.Item>
 
 
 

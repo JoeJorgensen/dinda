@@ -6,28 +6,39 @@ import Card from "../Card"
 
 const Home = ()=>{
     
-    // let auth = useContext(AuthContext)
-    // if(!auth.user){
-    //     return <p>
-    //         Welcome to the starter app!
-    //     </p>
-    // }
+    let auth = useContext(AuthContext)
+    if(auth.user){
+        return (
+            <Card>
+                <Badge bg='dark'><h3>Welcome to dinda!</h3></Badge>
+                <br></br>
+                <br></br>
 
-    return (
-        <Card>
-        <div>
-            <h1>Welcome to dinda! Login or Register to access more features!</h1>
-           
-           
-            <Link to="/login"><Badge style={{color: 'white'}}><h4>Login</h4></Badge></Link>
-            <br/>
-            <br/>
+                <h5>
+                A place to quickly find meals that you love.
+                </h5>
+            </Card>
+        )
+    }
 
+    else{
 
-            <Link to="/register"><Badge style={{color: 'white'}} ><h4>Register</h4></Badge></Link>
-          
-        </div>
-        </Card>
-    )
+        return (
+            <Card>
+            <div>
+                <h1>Welcome to dinda! Login or Register to access more features!</h1>
+               
+               
+                <Link to="/login"><Badge style={{color: 'white'}}><h4>Login</h4></Badge></Link>
+                <br/>
+                <br/>
+    
+    
+                <Link to="/register"><Badge style={{color: 'white'}} ><h4>Register</h4></Badge></Link>
+              
+            </div>
+            </Card>
+        )
+    }
 } 
 export default Home
